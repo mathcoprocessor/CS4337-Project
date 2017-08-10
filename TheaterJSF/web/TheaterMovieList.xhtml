@@ -35,14 +35,15 @@
                         <f:facet name="header">
                             <h:outputText value="Showtimes"/>
                         </f:facet>
-                        <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie,theaterBean.theater)}" var="showing">
-                            <h:column>
-                                <h:outputText value="#{showing.showtime.time}">
-                                    <f:convertDateTime pattern="HH:mm" />
-                                </h:outputText>
+                        <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
+                            <h:column>                               
+                                <h:commandButton action="#{checkOutBean.gotoCheckout()}" value="#{showing.formattedShowtime}">
+                                    <f:param name="showingID" value="#{showing.id}" />
+                                </h:commandButton>
                             </h:column>
                         </h:dataTable>
                     </h:column>
+                    
                 </h:dataTable>
             </f:view>
             <h:commandButton value="Back to Theaters"                                  

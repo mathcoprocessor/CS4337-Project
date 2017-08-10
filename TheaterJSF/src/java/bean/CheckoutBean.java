@@ -5,11 +5,15 @@
  */
 package bean;
 
+import ejb.TheaterEJB;
 import entity.Movie;
 import entity.Showing;
 import entity.Theater;
 import java.util.Date;
+import java.util.Map;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -20,6 +24,9 @@ import javax.inject.Named;
 @RequestScoped
 public class CheckoutBean
 {
+
+    @EJB
+    private TheaterEJB theaterEJB;
     private String creditcard;
     private int cvv;
     private Date expDate;
@@ -27,11 +34,13 @@ public class CheckoutBean
     private Theater theater;
     private Showing showing;
     
-    public String gotoCheckout(Showing showing, Movie movie, Theater theater)
+    public String gotoCheckout()
     {
-        this.showing = showing;
-        this.movie = movie;
-        this.theater = theater;
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = 
+            fc.getExternalContext().getRequestParameterMap();
+        Integer showingid =  Integer.parseInt(params.get("showingID"));
+        this.showing = theaterEJB.findShowingsById(showingid);
         
         return "CheckoutMovie.xhtml";
     }
@@ -85,6 +94,17 @@ public class CheckoutBean
     {
         this.theater = theater;
     }
+
+    public Showing getShowing()
+    {
+        return showing;
+    }
+
+    public void setShowing(Showing showing)
+    {
+        this.showing = showing;
+    }
+    
     
     
 }

@@ -22,6 +22,12 @@ public class TheaterEJB{
     public void persist(Object object) {
         em.persist(object);
     }
+    
+    public Theater findTheaterById(int id)
+    {
+        return em.createNamedQuery("Theater.findById", Theater.class)
+                .setParameter("id", id).getSingleResult();
+    }
     public List<Theater> findAllTheaters(){
         return em.createNamedQuery("Theater.findAll", Theater.class).getResultList();
     }
@@ -37,5 +43,11 @@ public class TheaterEJB{
         return em.createNamedQuery("Showing.findShowingsForMovieTheater", Showing.class)
                 .setParameter("movieid", movie)
                 .setParameter("theaterid", theater).getResultList();
+    }
+    
+    public Showing findShowingsById(int id)
+    {
+        return em.createNamedQuery("Showing.findById", Showing.class)
+                .setParameter("id", id).getSingleResult();
     }
 }

@@ -43,8 +43,9 @@
                         <f:facet name="header">
                             <h:outputText value="Select"/>
                         </f:facet>
-                        <h:commandButton value="Show Movies"
-                                       action="#{theaterBean.showTheater(theater)}"/>
+                        <h:commandButton value="Show Movies" action="#{theaterBean.showTheater(theater)}">
+                            <f:param name="theaterID" value="#{theater.id}" />
+                        </h:commandButton>
                     </h:column>
                 </h:dataTable>
             </h:form>

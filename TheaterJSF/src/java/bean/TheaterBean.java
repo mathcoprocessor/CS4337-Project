@@ -5,9 +5,11 @@ import entity.Movie;
 import entity.Showing;
 import entity.Theater;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -29,14 +31,20 @@ public class TheaterBean {
         this.theater = theater;
     }
     public String showTheater(Theater theater){
-        this.theater = theater;
+        //this.theater = theater;
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = 
+            fc.getExternalContext().getRequestParameterMap();
+        Integer theaterid =  Integer.parseInt(params.get("theaterID"));
+        this.theater = theaterEJB.findTheaterById(theaterid);
+        
         return "TheaterMovieList.xhtml";
     }
     public List<Movie> getMoviesListForTheater(){
         return theaterEJB.findMoviesByTheater();
     }
     
-    public List<Showing> getShowingsForAMovie(Movie movie, Theater theater)
+    public List<Showing> getShowingsForAMovie(Movie movie)
     {
         return theaterEJB.findShowtimesForMovieByTheater(movie, theater);
     }

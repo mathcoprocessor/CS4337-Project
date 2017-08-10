@@ -6,7 +6,10 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Checking out 
+        <h:form>
+            Checking out @ time
+            <h:outputText value="#{checkOutBean.showing.formattedShowtime}"/>
+        </h:form>
     </h:body>
 </html>
 

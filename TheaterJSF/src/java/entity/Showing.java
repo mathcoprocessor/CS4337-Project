@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -69,6 +70,10 @@ public class Showing implements Serializable {
 
     public Date getShowtime() {
         return showtime;
+    }
+    
+    public String getFormattedShowtime() {
+        return new SimpleDateFormat("HH:mm").format(showtime);
     }
 
     public void setShowtime(Date showtime) {
