@@ -4,6 +4,8 @@ import ejb.TheaterEJB;
 import entity.Movie;
 import entity.Showing;
 import entity.Theater;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
@@ -22,6 +24,7 @@ public class TheaterBean {
     @EJB
     private TheaterEJB theaterEJB;
     private Theater theater;
+    private List<Movie> movies;
     public TheaterBean() {
     }
     public Theater getTheater() {
@@ -38,6 +41,16 @@ public class TheaterBean {
         Integer theaterid =  Integer.parseInt(params.get("theaterID"));
         this.theater = theaterEJB.findTheaterById(theaterid);
         
+        Collection<Showing> tempshowing = theater.getShowingCollection();
+        movies = new ArrayList<>();
+        for(Showing show: tempshowing)
+        {
+            if(!movies.contains(show.getMovieid()))
+            {
+                movies.add(show.getMovieid());
+            }
+        }
+        
         return "TheaterMovieList.xhtml";
     }
     public List<Movie> getMoviesListForTheater(){
@@ -46,6 +59,18 @@ public class TheaterBean {
     
     public List<Showing> getShowingsForAMovie(Movie movie)
     {
-        return theaterEJB.findShowtimesForMovieByTheater(movie, theater);
+        return movie.getShowingsWithTheaterId(theater.getId());
     }
+
+    public List<Movie> getMovies()
+    {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies)
+    {
+        this.movies = movies;
+    }
+    
+    
 }

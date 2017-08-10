@@ -80,7 +80,7 @@ public class Theater implements Serializable {
         this.zipcode = zipcode;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public Collection<Showing> getShowingCollection() {
         return showingCollection;
     }

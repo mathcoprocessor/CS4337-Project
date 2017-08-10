@@ -19,7 +19,7 @@
         <h:form>
             <f:view>
                 <h1><h:outputText value="Movie List"/></h1>
-                <h:dataTable value="#{theaterBean.moviesListForTheater}" var="movie">
+                <h:dataTable value="#{theaterBean.movies}" var="movie">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Id"/>
@@ -46,7 +46,7 @@
                         <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
                             <h:column> 
                                 <h:commandLink value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
-                                    
+                                    <f:param name="showingID" value="#{showing.id}"/>
                                 </h:commandLink>
                                 <h:outputText value="#{showing.formattedShowtime} ShowingID: #{showing.id}"/>
                             </h:column>

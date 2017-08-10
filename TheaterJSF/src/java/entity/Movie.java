@@ -6,7 +6,9 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -80,8 +82,22 @@ public class Movie implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public List<Showing> getShowingsWithTheaterId(int theaterID)
+    {
+        List<Showing> output = new ArrayList<>();
+        for (Showing showing : showingCollection)
+        {
+            if(showing.getTheaterid().getId() == theaterID)
+            {
+                output.add(showing);
+            }
+        }
+        
+        return output;
+    }
 
-    @XmlTransient
+    //@XmlTransient
     public Collection<Showing> getShowingCollection() {
         return showingCollection;
     }
