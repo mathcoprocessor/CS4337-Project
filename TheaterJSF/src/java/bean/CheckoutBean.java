@@ -34,14 +34,15 @@ public class CheckoutBean
     private Theater theater;
     private Showing showing;
     
-    public String gotoCheckout()
+    public String gotoCheckout(Showing showing)
     {
+        System.out.println("gotoCheckout() Called.");
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> params = 
             fc.getExternalContext().getRequestParameterMap();
         Integer showingid =  Integer.parseInt(params.get("showingID"));
         this.showing = theaterEJB.findShowingsById(showingid);
-        
+        System.out.println("Showing ID selected: " + showingid);
         return "CheckoutMovie.xhtml";
     }
 
@@ -49,62 +50,48 @@ public class CheckoutBean
     {
         return creditcard;
     }
-
     public void setCreditcard(String creditcard)
     {
         this.creditcard = creditcard;
     }
-
     public int getCvv()
     {
         return cvv;
     }
-
     public void setCvv(int cvv)
     {
         this.cvv = cvv;
     }
-
     public Date getExpDate()
     {
         return expDate;
     }
-
     public void setExpDate(Date expDate)
     {
         this.expDate = expDate;
     }
-
     public Movie getMovie()
     {
         return movie;
     }
-
     public void setMovie(Movie movie)
     {
         this.movie = movie;
     }
-
     public Theater getTheater()
     {
         return theater;
     }
-
     public void setTheater(Theater theater)
     {
         this.theater = theater;
     }
-
     public Showing getShowing()
     {
         return showing;
     }
-
     public void setShowing(Showing showing)
     {
         this.showing = showing;
     }
-    
-    
-    
 }

@@ -5,6 +5,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Movies showing at #{theaterBean.theater.name}</title>
+        <style>
+            body{
+                background-color:#434343;
+                color: #B7B7B7;
+                a:link{color:#DDDDDD}
+                a:visited{color:pink}
+            }
+        </style>        
     </h:head>
     <h:body>
         <h3>Movies showing at #{theaterBean.theater.name}</h3>
@@ -36,14 +44,21 @@
                             <h:outputText value="Showtimes"/>
                         </f:facet>
                         <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
-                            <h:column>                               
-                                <h:commandButton action="#{checkOutBean.gotoCheckout()}" value="#{showing.formattedShowtime}">
-                                    <f:param name="showingID" value="#{showing.id}" />
-                                </h:commandButton>
+                            <h:column> 
+                                <h:commandLink value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
+                                    
+                                </h:commandLink>
+                                <h:outputText value="#{showing.formattedShowtime} ShowingID: #{showing.id}"/>
                             </h:column>
                         </h:dataTable>
                     </h:column>
-                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:commandLink value="Select a predesignated showing" action="#{checkOutBean.gotoCheckout(showing)}">
+                                <f:param name="showingID" value="4"/>
+                            </h:commandLink>
+                        </f:facet>
+                    </h:column>
                 </h:dataTable>
             </f:view>
             <h:commandButton value="Back to Theaters"                                  
