@@ -2,6 +2,7 @@ package bean;
 
 import ejb.TheaterEJB;
 import entity.Movie;
+import entity.Showing;
 import entity.Theater;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,6 +33,11 @@ public class TheaterBean {
         return "TheaterMovieList.xhtml";
     }
     public List<Movie> getMoviesListForTheater(){
-        return theaterEJB.findMoviesByTheater(this.theater.getId());
+        return theaterEJB.findMoviesByTheater();
+    }
+    
+    public List<Showing> getShowingsForAMovie(Movie movie, Theater theater)
+    {
+        return theaterEJB.findShowtimesForMovieByTheater(movie, theater);
     }
 }

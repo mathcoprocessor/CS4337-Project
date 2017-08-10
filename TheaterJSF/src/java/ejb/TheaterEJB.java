@@ -2,6 +2,7 @@
 package ejb;
 
 import entity.Movie;
+import entity.Showing;
 import entity.Theater;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -29,5 +30,12 @@ public class TheaterEJB{
     }
     public List<Movie> findMoviesByTheater(){
         return em.createNamedQuery("Movie.findAll", Movie.class).getResultList();
+    }
+    
+    public List<Showing> findShowtimesForMovieByTheater(Movie movie, Theater theater)
+    {
+        return em.createNamedQuery("Showing.findShowingsForMovieTheater", Showing.class)
+                .setParameter("movieid", movie)
+                .setParameter("theaterid", theater).getResultList();
     }
 }
