@@ -8,41 +8,36 @@
         <link type="text/css" rel="stylesheet" href="assets/css/main.css" />           
     </h:head>
     <h:body>
-        <section id="main" class="wrapper">
-            <div class="inner">
-                <header class="align-center">
-                        <h2><h:outputText value="Theaters"/></h2>
-                </header>
-                <f:view>
-                    <h:form>
-                        <div class="table-wrapper">   
-                            <h:dataTable value="#{mainPageBean.theaters}" var="theater" styleClass="alt">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Name"/>
-                                    </f:facet>
-                                    <h:outputText value="#{theater.name}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Zipcode"/>
-                                    </f:facet>
-                                    <h:outputText value="#{theater.zipcode}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Select"/>
-                                    </f:facet>
-                                    <h:commandButton value="Show Movies" action="#{theaterBean.showTheater(theater)}">
-                                        <f:param name="theaterID" value="#{theater.id}" />
-                                    </h:commandButton>
-                                </h:column>
-                            </h:dataTable>
-                        </div>
-                    </h:form>
-                </f:view>
-            </div>
-        </section>
+        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="Theaters"/></h1>
+                <h:dataTable value="#{mainPageBean.theaters}" var="theater">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{theater.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Zipcode"/>
+                        </f:facet>
+                        <h:outputText value="#{theater.zipcode}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Select"/>
+                        </f:facet>
+                        <h:commandButton value="Show Movies" action="#{theaterBean.showTheater(theater)}">
+                            <f:param name="theaterID" value="#{theater.id}" />
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
     </h:body>
 </html>
 
