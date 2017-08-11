@@ -30,7 +30,8 @@ When a showtime is selected, the user is taken to a page to purchase tickets
 for the showing.  This page will allow the user to select the number of tickets
 they wish to purchase, and enter their credit card details.  To make up for the
 lack of zipcode validation, we've put a validator on the CCV value in addition
-to the CreditCard value.
+to the CreditCard value.  Please note for the validation to scroll all the way
+to the bottom of the page for the validation error.
 
 After the purchase, a receipt page is shown, showing the information about
 their purchase (including order total).
