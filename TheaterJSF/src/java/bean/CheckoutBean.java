@@ -39,6 +39,7 @@ public class CheckoutBean implements Serializable
     private Showing showing;
     private int quantity;
     
+    //user f:param to go to checkout a movie
     public String gotoCheckout(Showing showing)
     {
         System.out.println("gotoCheckout() Called.");
