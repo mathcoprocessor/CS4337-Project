@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h3>Thank you for purchasing!</h3>
+        <h5>Here is your purchase information</h5>
+        <h:form>
+            <h:panelGrid>
+                <h:outputText value="Location:  #{checkOutBean.showing.theaterid.name}"/>
+                <h:outputText value="Movie: #{checkOutBean.showing.movieid.name}"/>
+                <h:outputText value="Description: #{checkOutBean.showing.movieid.description}"/>
+                <h:outputText value="Showtime: #{checkOutBean.showing.formattedShowtime}"/>
+                <h:outputText value="Number of tickets: #{checkOutBean.quantity}"/>
+            </h:panelGrid>
+            <h:commandButton value="Return to home" action="index.xhtml"/>
+        </h:form>
+    </h:body>
+</html>
+

@@ -16,6 +16,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -30,11 +31,13 @@ public class CheckoutBean implements Serializable
     @EJB
     private TheaterEJB theaterEJB;
     private String creditcard;
+    private float cost =10f;
     private int cvv;
     private Date expDate;
     private Movie movie;
     private Theater theater;
     private Showing showing;
+    private int quantity;
     
     public String gotoCheckout(Showing showing)
     {
@@ -47,7 +50,22 @@ public class CheckoutBean implements Serializable
         System.out.println("Showing ID selected: " + showingid);
         return "CheckoutMovie.xhtml";
     }
+    
 
+    public float getTaxAmount()
+    {
+        return getSubtotal() * 0.0825f;
+    }
+    public float getSubtotal()
+    {
+        return quantity * cost;
+    }
+    
+    public float getTotal()
+    {
+        return getSubtotal() + getTaxAmount();
+    }
+    
     public String getCreditcard()
     {
         return creditcard;
@@ -96,4 +114,26 @@ public class CheckoutBean implements Serializable
     {
         this.showing = showing;
     }
+
+    public int getQuantity()
+    {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity)
+    {
+        this.quantity = quantity;
+    }
+
+    public double getCost()
+    {
+        return cost;
+    }
+
+    public void setCost(float cost)
+    {
+        this.cost = cost;
+    }
+    
+    
 }
