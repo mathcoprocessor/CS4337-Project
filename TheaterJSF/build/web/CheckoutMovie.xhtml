@@ -38,14 +38,16 @@
             <h3>Payment Details</h3>
             <p>NOTE: Payment is simulated. Do not enter actual card information.</p>
             <h:panelGrid>
-                <h:outputText value="Card"/>
+                <h:outputText value="Card" id="CC"/>
                 <h:inputText value="#{checkOutBean.creditcard}">
                     <f:validateLength minimum="16" maximum="16"/> 
                 </h:inputText>
-                <h:outputText value="CVV"/>
+                <h:message for="CC"/>
+                <h:outputText value="CVV" id="CCV"/>
                 <h:inputText value="#{checkOutBean.cvv}">
                     <f:validateLength minimum="3" maximum="3"/> 
                 </h:inputText>
+                <h:message for="CCV"/>
             </h:panelGrid>
             
             <h:commandButton value="Confirm Payment" action="RecieptPage.xhtml" />
