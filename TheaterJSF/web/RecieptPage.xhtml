@@ -23,6 +23,7 @@
                 <h:outputText value="Description: #{checkOutBean.showing.movieid.description}"/>
                 <h:outputText value="Showtime: #{checkOutBean.showing.formattedShowtime}"/>
                 <h:outputText value="Number of tickets: #{checkOutBean.quantity}"/>
+                <h:outputText value="Order Total: $#{checkOutBean.total}"/> 
             </h:panelGrid>
             <h:commandButton value="Return to home" action="index.xhtml"/>
         </h:form>

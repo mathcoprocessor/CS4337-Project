@@ -16,41 +16,41 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:column>
-                <h:graphicImage value="#{checkOutBean.showing.movieid.poster}"/>
-            </h:column>
-            <h:column>
-                <h:panelGrid>
+            <h:panelGrid>
+                
+                    <h:graphicImage value="#{checkOutBean.showing.movieid.poster}"/>
+                
                     <h:outputText value="Location:  #{checkOutBean.showing.theaterid.name}"/>
                     <h:outputText value="Movie: #{checkOutBean.showing.movieid.name}"/>
                     <h:outputText value="Description: #{checkOutBean.showing.movieid.description}"/>
                     <h:outputText value="Showtime: #{checkOutBean.showing.formattedShowtime}"/>
-                </h:panelGrid>
-                <h:panelGroup>
-                    <h:outputText value="Cost per Ticket: #{checkOutBean.showing.formattedShowtime}"/>
-                    <h:outputText value="Number of tickets:"/>
-                    <h:inputText value="#{checkOutBean.quantity}"/>
-                    <h:outputText value="Subtotal:  #{checkOutBean.subtotal}"/>
-                    <h:outputText value="Tax:  #{checkOutBean.taxAmount}"/>
-                    <h:outputText value="Total:  #{checkOutBean.total}"/>
-                </h:panelGroup>
-                <hr></hr>
-                <h3>Payment Details</h3>
-                <p>NOTE: Payment is simulated. Do not enter actual card information.</p>
-                <h:panelGrid>
-                    <h:outputText value="Card" id="CC"/>
-                    <h:inputText value="#{checkOutBean.creditcard}">
-                        <f:validateLength minimum="16" maximum="16"/> 
-                    </h:inputText>
-                    <h:message for="CC"/>
-                    <h:outputText value="CVV" id="CCV"/>
-                    <h:inputText value="#{checkOutBean.cvv}">
-                        <f:validateLength minimum="3" maximum="3"/> 
-                    </h:inputText>
-                    <h:message for="CCV"/>
-                </h:panelGrid>
-                <h:commandButton value="Confirm Payment" action="RecieptPage.xhtml" />
-            </h:column>
+
+                    
+                        <h:outputText value="Cost per Ticket: #{checkOutBean.showing.formattedShowtime}"/>
+                        <h:outputText value="Number of tickets:"/>
+                        <h:inputText value="#{checkOutBean.quantity}"/>
+                        <h:outputText value="Subtotal:  #{checkOutBean.subtotal}"/>
+                        <h:outputText value="Tax:  #{checkOutBean.taxAmount}"/>
+                        <h:outputText value="Total:  #{checkOutBean.total}"/>
+                    
+                    <hr></hr>
+                    <h3>Payment Details</h3>
+                    <p>NOTE: Payment is simulated. Do not enter actual card information.</p>
+                    <h:panelGrid>
+                        <h:outputText value="Card" id="CC"/>
+                        <h:inputText value="#{checkOutBean.creditcard}">
+                            <f:validateLength minimum="16" maximum="16"/> 
+                        </h:inputText>
+                        <h:message for="CC"/>
+                        <h:outputText value="CVV" id="CCV"/>
+                        <h:inputText value="#{checkOutBean.cvv}">
+                            <f:validateLength minimum="3" maximum="3"/> 
+                        </h:inputText>
+                        <h:message for="CCV"/>
+                    </h:panelGrid>
+                    <h:commandButton value="Confirm Payment" action="RecieptPage.xhtml" />
+                
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>
