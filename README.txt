@@ -4,6 +4,11 @@ Authors:
 Mark Butler
 Parth Sutaria
 **********************************
+Database:
+	Name: TheaterDB
+	user: scott
+	password: tiger
+
 Web Pages : 
 	index.xhtml					Main page.  Lists Movie theaters in Collin County by Zip Code (no zip code validation)
 	TheaterMovieList.xhtml		Shows the movies and showtimes for the selected theater
