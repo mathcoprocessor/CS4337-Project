@@ -44,19 +44,12 @@
                         </f:facet>
                         <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
                             <h:column> 
-                                <h:commandLink value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
+                                <h:commandButton value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
                                     <f:param name="showingID" value="#{showing.id}"/>
-                                </h:commandLink>
+                                </h:commandButton>
                                 <h:outputText value="#{showing.formattedShowtime} ShowingID: #{showing.id}"/>
                             </h:column>
                         </h:dataTable>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:commandLink value="Select a predesignated showing" action="#{checkOutBean.gotoCheckout(showing)}">
-                                <f:param name="showingID" value="4"/>
-                            </h:commandLink>
-                        </f:facet>
                     </h:column>
                 </h:dataTable>
             </f:view>
