@@ -8,48 +8,54 @@
         <link type="text/css" rel="stylesheet" href="assets/css/main.css" />       
     </h:head>
     <h:body>
-        <h1>Movies showing at #{theaterBean.theater.name}</h1>
-        <h:form>
-            <f:view>
-                <h1><h:outputText value="Movie List"/></h1>
-                <h:dataTable value="#{theaterBean.movies}" var="movie">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Poster"/>
-                        </f:facet>
-                        <h:graphicImage value="#{movie.poster}" width="168" height="250"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Name"/>
-                        </f:facet>
-                        <h:outputText value="#{movie.name}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Description"/>
-                        </f:facet>
-                        <h:outputText value="#{movie.description}"/>
-                    </h:column>                    
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Showtimes"/>
-                        </f:facet>
-                        <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
-                            <h:column> 
-                                <h:commandButton value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
-                                    <f:param name="showingID" value="#{showing.id}"/>
-                                </h:commandButton>
-                                <h:outputText value="#{showing.formattedShowtime} ShowingID: #{showing.id}"/>
-                            </h:column>
-                        </h:dataTable>
-                    </h:column>
-                </h:dataTable>
-            </f:view>
-            <h:commandButton value="Back to Theaters"                                  
-                             action="index.xhtml">  
-            </h:commandButton>
-            </h:form>
+        <section id="main" class="wrapper">
+            <div class="inner">
+                <header class="align-center">
+                        <h2>Movies showing at #{theaterBean.theater.name}</h2>
+                </header>
+                <h:form>
+                    <f:view>
+                        <div class="table-wrapper">
+                            <h:dataTable value="#{theaterBean.movies}" var="movie" styleClass="alt">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Poster"/>
+                                    </f:facet>
+                                    <h:graphicImage value="#{movie.poster}" width="168" height="250"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{movie.name}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Description"/>
+                                    </f:facet>
+                                    <h:outputText value="#{movie.description}"/>
+                                </h:column>                    
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Showtimes"/>
+                                    </f:facet>
+                                    <h:dataTable value="#{theaterBean.getShowingsForAMovie(movie)}" var="showing">
+                                        <h:column> 
+                                            <h:commandButton value="#{showing.formattedShowtime}" action="#{checkOutBean.gotoCheckout(showing)}">
+                                                <f:param name="showingID" value="#{showing.id}"/>
+                                            </h:commandButton>
+                                        </h:column>
+                                    </h:dataTable>
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </f:view>
+                    <h:commandButton value="Back to Theaters"                                  
+                                     action="index.xhtml">  
+                    </h:commandButton>
+                    </h:form>
+            </div>
+        </section>
     </h:body>
 </html>
 
