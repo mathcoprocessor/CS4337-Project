@@ -5,14 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Movie Theater System by Mark Butler</title>
-        <style>
-            body{
-                background-color:#434343;
-                color: #B7B7B7;
-                a:link{color:#DDDDDD}
-                a:visited{color:pink}
-            }
-        </style>            
+        <link type="text/css" rel="stylesheet" href="assets/css/main.css" />           
     </h:head>
     <h:body>
         <f:view>
@@ -21,12 +14,6 @@
             <h:form>
                 <h1><h:outputText value="Theaters"/></h1>
                 <h:dataTable value="#{mainPageBean.theaters}" var="theater">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{theater.id}"/>
-                    </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Name"/>
