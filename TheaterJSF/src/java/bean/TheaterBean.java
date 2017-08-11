@@ -4,6 +4,7 @@ import ejb.TheaterEJB;
 import entity.Movie;
 import entity.Showing;
 import entity.Theater;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Map;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -18,8 +20,8 @@ import javax.faces.context.FacesContext;
  * @author Mark Butler
  */
 @Named(value = "theaterBean")
-@RequestScoped
-public class TheaterBean {
+@SessionScoped
+public class TheaterBean implements Serializable{
 
     @EJB
     private TheaterEJB theaterEJB;
@@ -33,6 +35,7 @@ public class TheaterBean {
     public void setTheater(Theater theater) {
         this.theater = theater;
     }
+    
     public String showTheater(Theater theater){
         //this.theater = theater;
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -53,7 +56,7 @@ public class TheaterBean {
         
         return "TheaterMovieList.xhtml";
     }
-    public List<Movie> getMoviesListForTheater(){
+    private List<Movie> getMoviesListForTheater(){
         return theaterEJB.findMoviesByTheater();
     }
     

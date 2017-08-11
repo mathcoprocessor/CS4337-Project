@@ -9,10 +9,12 @@ import ejb.TheaterEJB;
 import entity.Movie;
 import entity.Showing;
 import entity.Theater;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -21,8 +23,8 @@ import javax.inject.Named;
  * @author Parth
  */
 @Named(value = "checkOutBean")
-@RequestScoped
-public class CheckoutBean
+@SessionScoped
+public class CheckoutBean implements Serializable
 {
 
     @EJB

@@ -74,7 +74,7 @@ public class Showing implements Serializable {
     
     public String getFormattedShowtime() {
         //System.out.println("getFormattedShowtime() Called.");
-        return new SimpleDateFormat("HH:mm").format(showtime);
+        return new SimpleDateFormat("hh:mm a").format(showtime);
     }
 
     public void setShowtime(Date showtime) {

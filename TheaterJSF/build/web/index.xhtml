@@ -20,7 +20,7 @@
 
             <h:form>
                 <h1><h:outputText value="Theaters"/></h1>
-                <h:dataTable value="#{mainPageBean.theatersList}" var="theater">
+                <h:dataTable value="#{mainPageBean.theaters}" var="theater">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Id"/>
@@ -46,33 +46,6 @@
                         <h:commandButton value="Show Movies" action="#{theaterBean.showTheater(theater)}">
                             <f:param name="theaterID" value="#{theater.id}" />
                         </h:commandButton>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-        </f:view>
-        <f:view>
-
-
-            <h:form>
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{mainPageBean.moviesList}" var="movie">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Id"/>
-                        </f:facet>
-                        <h:outputText value="#{movie.id}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Name"/>
-                        </f:facet>
-                        <h:outputText value="#{movie.name}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Description"/>
-                        </f:facet>
-                        <h:outputText value="#{movie.description}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

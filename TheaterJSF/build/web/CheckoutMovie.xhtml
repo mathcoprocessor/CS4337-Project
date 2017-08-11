@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Purchase Ticket</title>
         <style>
             body{
                 background-color:#434343;
@@ -15,8 +15,10 @@
     </h:head>
     <h:body>
         <h:form>
-            Checking out @ time
-            <h:outputText value="#{checkOutBean.showing.formattedShowtime}"/>
+            <p><h:outputText value="Location:  #{checkOutBean.showing.theaterid.name}"/></p>
+            <p><h:outputText value="Movie: #{checkOutBean.showing.movieid.name}"/></p>
+            <p><h:outputText value="Description: #{checkOutBean.showing.movieid.description}"/></p>
+            <p><h:outputText value="Showtime: #{checkOutBean.showing.formattedShowtime}"/></p>
         </h:form>
     </h:body>
 </html>
