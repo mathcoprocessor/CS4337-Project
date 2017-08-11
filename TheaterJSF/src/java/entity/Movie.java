@@ -34,7 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m")
     , @NamedQuery(name = "Movie.findById", query = "SELECT m FROM Movie m WHERE m.id = :id")
     , @NamedQuery(name = "Movie.findByName", query = "SELECT m FROM Movie m WHERE m.name = :name")
-    , @NamedQuery(name = "Movie.findByDescription", query = "SELECT m FROM Movie m WHERE m.description = :description")})
+    , @NamedQuery(name = "Movie.findByDescription", query = "SELECT m FROM Movie m WHERE m.description = :description")
+    , @NamedQuery(name = "Movie.findByPoster", query = "SELECT m FROM Movie_1 m WHERE m.poster = :poster")})
+        
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,6 +51,9 @@ public class Movie implements Serializable {
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
     private String description;
+    @Size(max = 100)
+    @Column(name = "POSTER")
+    private String poster;
     @OneToMany(mappedBy = "movieid")
     private Collection<Showing> showingCollection;
 
@@ -81,6 +86,14 @@ public class Movie implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
     
     public List<Showing> getShowingsWithTheaterId(int theaterID)

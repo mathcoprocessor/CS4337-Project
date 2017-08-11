@@ -22,6 +22,12 @@
                 <h:dataTable value="#{theaterBean.movies}" var="movie">
                     <h:column>
                         <f:facet name="header">
+                            <h:outputText value="Poster"/>
+                        </f:facet>
+                        <h:graphicImage value="#{movie.poster}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
                             <h:outputText value="Id"/>
                         </f:facet>
                         <h:outputText value="#{movie.id}"/>
